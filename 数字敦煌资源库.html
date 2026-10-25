@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>走进延安</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0806'/%3E%3Ctext x='32' y='43' font-size='34' text-anchor='middle' fill='%23d8b97f' font-family='KaiTi,serif'%3E敦%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0b0806;
+  --ink:#f4ecd9;
+  --ink-dim:#c8b693;
+  --gold:#d8b97f;
+  --red:#b81f2b;
+  --red-dark:#971825;
+  --line:rgba(244,236,217,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  color:var(--ink);background:var(--bg);overflow-x:hidden;
+}
+
+/* ===== 背景 ===== */
+.bg{
+  position:fixed;inset:0;z-index:-2;
+  background:var(--bg) url("assets/background.jpg") center 36% / cover no-repeat;
+  animation:bgIn 1.6s ease-out both;
+}
+.bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 95% at 50% 38%, rgba(11,8,6,.08) 0%, rgba(11,8,6,.52) 78%),
+    linear-gradient(180deg, rgba(11,8,6,.34) 0%, rgba(11,8,6,.16) 46%, rgba(11,8,6,.90) 100%);
+}
+@keyframes bgIn{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+
+/* ===== 左侧竖排品牌 ===== */
+/*.brand-left{
+  position:fixed;left:clamp(14px,3vw,56px);top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:24px;z-index:2;
+  animation:rise .9s .15s ease-out both;
+}
+.brand-zh{
+  font-family:"KaiTi","STKaiti","楷体","Noto Serif CJK SC",serif;
+  font-size:clamp(26px,2.7vw,40px);line-height:1.4;letter-spacing:.12em;
+  writing-mode:vertical-rl;color:var(--ink);text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+.brand-en{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(10px,1vw,14px);letter-spacing:.46em;
+  writing-mode:vertical-rl;color:var(--ink-dim);
+}*/
+
+/* ===== 中部主视觉 ===== */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:92px 24px 178px;
+}
+.hero-title{
+  font-family:"Songti SC","SimSun","Noto Serif CJK SC",serif;
+  font-weight:700;font-size:clamp(46px,9.5vw,104px);
+  letter-spacing:.16em;padding-left:.16em;
+  color:var(--ink);text-shadow:0 4px 30px rgba(0,0,0,.6);
+  animation:rise .9s .25s ease-out both;
+}
+.hero-sub{
+  margin-top:16px;font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(13px,1.9vw,24px);letter-spacing:.34em;text-indent:.34em;
+  color:var(--ink-dim);animation:rise .9s .35s ease-out both;
+}
+.enter-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:clamp(28px,5vh,48px);
+  min-width:min(300px,72vw);height:clamp(52px,6.6vh,64px);padding:0 34px;
+  background:var(--red);color:#fff;text-decoration:none;
+  font-size:clamp(18px,1.9vw,22px);letter-spacing:.38em;text-indent:.38em;
+  border-radius:4px;box-shadow:0 10px 30px rgba(184,31,43,.35);
+  transition:background .25s ease,transform .25s ease,box-shadow .25s ease;
+  animation:rise .9s .45s ease-out both;
+}
+.enter-btn:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 14px 34px rgba(184,31,43,.45)}
+.enter-btn:active{transform:translateY(0)}
+.enter-btn:focus-visible,.nav-item:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ===== 底部导航 + 版权 ===== */
+.nav-wrap{
+  position:fixed;left:0;right:0;bottom:0;z-index:3;
+  background:linear-gradient(180deg, rgba(11,8,6,0) 0%, rgba(11,8,6,.93) 24%, rgba(11,8,6,.98) 100%);
+  padding:26px 18px 10px;
+  animation:rise .9s .55s ease-out both;
+}
+.nav{
+  max-width:1180px;margin:0 auto;list-style:none;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+}
+.nav-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  min-height:60px;padding:8px 6px;text-align:center;text-decoration:none;
+  color:var(--ink);border-radius:4px;min-width:0;
+  transition:color .2s ease,background .2s ease;
+}
+.nav-item:hover{color:var(--gold);background:rgba(244,236,217,.07)}
+.nav-cn{font-size:clamp(14px,1.4vw,17px);letter-spacing:.1em}
+.nav-badge{
+  display:inline-block;margin-left:7px;padding:1px 5px;border-radius:3px;
+  background:var(--red);color:#fff;font-size:9px;line-height:1.45;vertical-align:2px;
+}
+.nav-en{font-size:clamp(8px,.9vw,11px);letter-spacing:.16em;color:var(--ink-dim)}
+.footer{
+  max-width:1180px;margin:10px auto 0;padding:0 4px 14px;text-align:center;
+  font-size:clamp(9px,.8vw,11.5px);letter-spacing:.04em;color:rgba(244,236,217,.56);
+}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+@media (min-width:768px){
+  .nav{gap:0;grid-template-columns:repeat(4,1fr)}
+  .nav-item{min-height:66px;border-left:1px solid var(--line)}
+  .nav-item:first-child{border-left:0}
+  .nav-wrap{padding:30px 24px 8px}
+  .footer{padding-bottom:18px}
+}
+@media (max-width:520px){
+  .brand-left{top:26px;transform:none;flex-direction:row;align-items:center;gap:12px}
+  .brand-zh{writing-mode:horizontal-tb;font-size:22px}
+  .brand-en{display:none}
+  .hero{padding-top:110px;justify-content:flex-start}
+  .nav{gap:6px}
+  .nav-en{letter-spacing:.1em}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"></div>
+
+<!-- ===== 中部主视觉 ===== -->
+<main class="hero">
+  <h1 class="hero-title">走进延安</h1>
+  <p class="hero-sub">zou jin yan an</p>
+  <a class="enter-btn" href="https://ydcx.zybnb.eu.org">立即进入</a>
+</main>
+
+<!-- ===== 底部导航 ===== -->
+<div class="nav-wrap">
+  <nav aria-label="资源库导航">
+    <ul class="nav">
+      <li>
+                  <a class="nav-item" >
+                  <span class="nav-cn">资源库</span>
+          <span class="nav-en">DIGITAL RESOURCE LIBRARY</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" >
+          <span class="nav-cn">开放素材库</span>
+          <span class="nav-en">OPEN MATERIAL LIBRARY</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" >
+          <span class="nav-cn">数字藏经洞</span>
+          <span class="nav-en">DIGITAL LIBRARY CAVE</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" >
+          <span class="nav-cn">敦煌学研究文献库</span>
+          <span class="nav-en">DIGITAL LIBRARY FOR DUNHUANG STUDIES</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <footer class="footer">敦煌研究院版权所有 2016-2026 Copyright For Dunhuang Academy：陇ICP备11000088号，甘公网安备62098202000041号</footer>
+</div>
+
+</body>
+</html>
